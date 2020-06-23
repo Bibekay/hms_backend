@@ -17,12 +17,12 @@ router.post('/signup', (req, res, next) => {
             fullname:req.body.fullname,
             username: req.body.username,
             password: hash,
-            phone: req.body.phone,
+            contact: req.body.contact,
             email: req.body.email,
             image: req.body.image
         }).then((user) => {
             let token = jwt.sign({ _id: user._id }, process.env.SECRET);
-            res.json({ status: "Signup success!", token: token });
+            res.json({ status: "Signup Successful", token: token });
         }).catch(next);
     });
 });
