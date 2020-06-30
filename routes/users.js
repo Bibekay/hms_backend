@@ -42,8 +42,14 @@ router.post('/login', (req, res, next) => {
                             err.status = 401;
                             return next(err);
                         }
+                        if (user.admin)
+                        {
+                            let token = jwt.sign({ _id: user._id }, process.env.SECRET);
+                        res.json({ status:"isadmin",  token: token });
+                        }
+
                         let token = jwt.sign({ _id: user._id }, process.env.SECRET);
-                        res.json({ status: "Login Successful", token: token });
+                        res.json({ status: "Login Successfull", token: token });
                     }).catch(next);
             }
         }).catch(next);
