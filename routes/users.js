@@ -66,6 +66,13 @@ router.put('/me', auth.verifyUser, (req, res, next) => {
         }).catch(next);
 });
 
+router.route('/userdetails')
+.get((req,res,next) => {
+    User.find({})
+    .then((users) => {
+        res.json(users);
+    }).catch((err) => next(err));
+});
 
 router.route('/:id/saved')
 .get((req, res, next) => {

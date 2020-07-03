@@ -30,9 +30,9 @@ const userSchema = new mongoose.Schema({
     image:{
         type:String
     },
-    saved:[{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Hotel'}],
+    // saved:[{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'Hotel'}],
     admin: {
         type: Boolean,
         default: false
