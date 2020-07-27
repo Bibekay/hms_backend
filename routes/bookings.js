@@ -21,5 +21,25 @@ router.post('/booking', auth.verifyUser, (req, res, next) => {
     }).catch(next);
 });
 
+router.get('/booking', (req,res,next)=>{
+    Booking.find({})
+    .populate('user')
+    .populate('hotel')
+    .then((booking) => {
+        res.json(booking);
+    }).catch((err) => next(err));
+
+});
+
+router.get('/userBookings', auth.verifyUser, (req, res, next) => {
+    Booking.find({user:req.user._id})
+    .populate('hotel')
+    .populate('user')
+    .then((booking) => {
+        res.json(booking);
+    }).catch((err) => next(err));
+});
+
+
 
 module.exports = router;
