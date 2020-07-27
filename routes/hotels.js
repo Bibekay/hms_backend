@@ -19,5 +19,13 @@ router.route('/hotel', auth.verifyUser)
     }).catch(next);
 });
 
+router.get('/hotel', (req,res,next)=>{
+    Hotel.find({})
+    .then((hotel) => {
+        res.json(hotel);
+    }).catch((err) => next(err));
+
+
+});
 
 module.exports = router;
