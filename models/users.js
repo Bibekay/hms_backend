@@ -27,12 +27,19 @@ const userSchema = new mongoose.Schema({
         minlength: 6
     },
 
+    birthyear:{
+        type:String,
+        required:false
+    },
+    gender:{
+        type:String,
+        required: false
+    },
+
     image:{
         type:String
     },
-    // saved:[{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Hotel'}],
+
     admin: {
         type: Boolean,
         default: false

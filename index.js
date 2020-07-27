@@ -19,6 +19,7 @@ app.use(express.urlencoded({extended: true }));
 
 app.use(express.static(__dirname + "/public"));
 app.use(express.static(__dirname + "/public/hotels"));
+app.use(express.static(__dirname + "/public/users"));
 mongoose.connect(process.env.URL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
     .then((db) => {
         console.log("Successfully connected to MongodB server");
