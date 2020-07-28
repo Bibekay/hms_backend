@@ -17,6 +17,10 @@ router.route('/hotel', auth.verifyUser)
         res.statusCode = 200;
         res.json(hotel);
     }).catch(next);
+
+
+
+        
 });
 
 router.get('/hotel', (req,res,next)=>{
@@ -27,5 +31,21 @@ router.get('/hotel', (req,res,next)=>{
 
 
 });
+
+router.put('/:id/Update',(req, res, next)=>
+{
+    newhotel = {
+        hotel_name:req.body.hotel_name, 
+        description: req.body.description,
+        price:req.body.price, 
+        hotel_image: req.body.hotel_image
+
+        }
+        Hotel.findByIdAndUpdate(req.params.id,  {$set:newhotel},{new:true})
+        .then((reply)=>{
+            if(reply == null) throw new Error("post not found");
+            res.json(reply);
+        }).catch(next);
+ });
 
 module.exports = router;
