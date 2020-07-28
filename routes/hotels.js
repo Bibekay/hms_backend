@@ -48,4 +48,12 @@ router.put('/:id/Update',(req, res, next)=>
         }).catch(next);
  });
 
+
+router.delete('/deleteHotel/:id', auth.verifyUser, (req, res, next)=> {
+    Hotel.findByIdAndDelete(req.params.id)
+    .then((hotel)=>{
+        res.json({status:"deleted"});
+    })
+}); 
+
 module.exports = router;
