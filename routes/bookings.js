@@ -40,6 +40,13 @@ router.get('/userBookings', auth.verifyUser, (req, res, next) => {
     }).catch((err) => next(err));
 });
 
+router.delete('/cancelBooking/:id', auth.verifyUser, (req, res, next)=> {
+    Booking.findByIdAndDelete(req.params.id)
+    .then((booking)=>{
+        res.json({status:"deleted"});
+    })
+}); 
+
 
 
 module.exports = router;
